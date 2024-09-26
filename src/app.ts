@@ -4,6 +4,7 @@ import { MemoryDB } from '@builderbot/bot'
 import { BaileysProvider } from '@builderbot/provider-baileys'
 import { toAsk, httpInject } from "@builderbot-plugins/openai-assistants"
 import { typing } from "./utils/presence"
+import { authorize, listMessages } from "./utils/mail-manager"
 
 /** Puerto en el que se ejecutará el servidor */
 const PORT = process.env.PORT ?? 3008
@@ -11,7 +12,8 @@ const PORT = process.env.PORT ?? 3008
 const ASSISTANT_ID = process.env.ASSISTANT_ID ?? ''
 const userQueues = new Map();
 const userLocks = new Map(); // New lock mechanism
-
+/** Keyword para iniciar en Mail Manager */
+const mailKeyword = 'Leermail';
 /**
  * Function to process the user's message by sending it to the OpenAI API
  * and sending the response back to the user.
@@ -42,7 +44,12 @@ const handleQueue = async (userId) => {
         userLocks.set(userId, true); // Lock the queue
         const { ctx, flowDynamic, state, provider } = queue.shift();
         try {
-            await processUserMessage(ctx, { flowDynamic, state, provider });
+            if(ctx.body == mailKeyword) {
+                authorize().then(listMessages).catch(console.error);
+            }
+                
+            else
+                await processUserMessage(ctx, { flowDynamic, state, provider });
         } catch (error) {
             console.error(`Error processing message for user ${userId}:`, error);
         } finally {
