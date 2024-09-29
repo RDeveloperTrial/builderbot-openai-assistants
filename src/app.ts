@@ -4,7 +4,8 @@ import { MemoryDB } from '@builderbot/bot'
 import { BaileysProvider } from '@builderbot/provider-baileys'
 import { toAsk, httpInject } from "@builderbot-plugins/openai-assistants"
 import { typing } from "./utils/presence"
-import { authorize, listMessages } from "./utils/mail-manager"
+import flowEmailsC from './flows/flow-C'
+import flowEmailsR from './flows/flow-R'
 
 /** Puerto en el que se ejecutará el servidor */
 const PORT = process.env.PORT ?? 3008
@@ -12,8 +13,7 @@ const PORT = process.env.PORT ?? 3008
 const ASSISTANT_ID = process.env.ASSISTANT_ID ?? ''
 const userQueues = new Map();
 const userLocks = new Map(); // New lock mechanism
-/** Keyword para iniciar en Mail Manager */
-const mailKeyword = 'Leermail';
+
 /**
  * Function to process the user's message by sending it to the OpenAI API
  * and sending the response back to the user.
@@ -35,7 +35,7 @@ const processUserMessage = async (ctx, { flowDynamic, state, provider }) => {
  */
 const handleQueue = async (userId) => {
     const queue = userQueues.get(userId);
-    
+
     if (userLocks.get(userId)) {
         return; // If locked, skip processing
     }
@@ -44,12 +44,7 @@ const handleQueue = async (userId) => {
         userLocks.set(userId, true); // Lock the queue
         const { ctx, flowDynamic, state, provider } = queue.shift();
         try {
-            if(ctx.body == mailKeyword) {
-                authorize().then(listMessages).catch(console.error);
-            }
-                
-            else
-                await processUserMessage(ctx, { flowDynamic, state, provider });
+            await processUserMessage(ctx, { flowDynamic, state, provider });
         } catch (error) {
             console.error(`Error processing message for user ${userId}:`, error);
         } finally {
@@ -60,6 +55,7 @@ const handleQueue = async (userId) => {
     userLocks.delete(userId); // Remove the lock once all messages are processed
     userQueues.delete(userId); // Remove the queue once all messages are processed
 };
+
 
 /**
  * Flujo de bienvenida que maneja las respuestas del asistente de IA
@@ -92,7 +88,8 @@ const main = async () => {
      * Flujo del bot
      * @type {import('@builderbot/bot').Flow<BaileysProvider, MemoryDB>}
      */
-    const adapterFlow = createFlow([welcomeFlow]);
+    const adapterFlow = createFlow([welcomeFlow, flowEmailsC, flowEmailsR]);
+    //Actualmente trabaja con dos flujos. Más info en: https://www.builderbot.app/en/methods
 
     /**
      * Proveedor de servicios de mensajería
