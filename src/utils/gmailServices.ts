@@ -46,6 +46,12 @@ async function getEmails(appClient) {
 
         const messages = res.data.messages || [];
         const emailArray = [];
+        
+        /** Message in case there's no emails */
+        if (!messages || messages.length === 0) {
+            console.log('No hay correos electrónicos.');
+            return;
+          }
 
         /** Retrieve email content (given the ID extracted previously) */
         for (const message of messages) {
@@ -61,12 +67,14 @@ async function getEmails(appClient) {
             const from = headers.find(header => header.name === 'From')?.value;
             const subject = headers.find(header => header.name === 'Subject')?.value;
             const snippet = emailData.snippet;
+            const body = getFullEmailBody(emailData)
             
             /** Build an email object containing the desired info */
             const emailObj = {
                 from: from || 'No sender',
                 subject: subject || 'No subject',
                 snippet: snippet || 'No snippet',
+                body: body || 'No body'
             };
             
             /** Add email object to an array of email objects */
@@ -81,6 +89,38 @@ async function getEmails(appClient) {
     }
 }
 
+// Función para obtener el cuerpo del email
+function getFullEmailBody(message): string {
+    try {
+
+      if (message.payload?.parts) {
+        // Si el mensaje tiene múltiples partes, encontramos la parte con el cuerpo
+        const part = message.payload.parts.find(
+          (part) => part.mimeType === 'text/plain' || part.mimeType === 'text/html'
+        );
+        
+        if (part && part.body?.data) {
+          // El cuerpo del email está codificado en base64, lo decodificamos
+          const decodedBody = Buffer.from(part.body.data, 'base64').toString('utf-8');
+          return decodedBody;
+        }
+      }
+  
+      // Si el cuerpo del email está en el payload principal
+      if (message.payload?.body?.data) {
+        const decodedBody = Buffer.from(message.payload.body.data, 'base64').toString('utf-8');
+        return decodedBody;
+      }
+  
+      return 'No se encontró el cuerpo del mensaje.';
+    } catch (error) {
+      console.error('Error al obtener el cuerpo del email:', error);
+      throw error;
+    }
+  }
+
 export {
     getEmails
 };
+
+

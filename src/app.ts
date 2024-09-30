@@ -4,8 +4,10 @@ import { MemoryDB } from '@builderbot/bot'
 import { BaileysProvider } from '@builderbot/provider-baileys'
 import { toAsk, httpInject } from "@builderbot-plugins/openai-assistants"
 import { typing } from "./utils/presence"
-import flowEmailsC from './flows/flow-C'
-import flowEmailsR from './flows/flow-R'
+import flowEmailsC from './flows/flow-C-snippet'
+import flowEmailsR from './flows/flow-R-snippet'
+import flowEmailsCFull from './flows/flow-C-full'
+import flowEmailsRFull from './flows/flow-R-full'
 
 /** Puerto en el que se ejecutará el servidor */
 const PORT = process.env.PORT ?? 3008
@@ -88,7 +90,7 @@ const main = async () => {
      * Flujo del bot
      * @type {import('@builderbot/bot').Flow<BaileysProvider, MemoryDB>}
      */
-    const adapterFlow = createFlow([welcomeFlow, flowEmailsC, flowEmailsR]);
+    const adapterFlow = createFlow([welcomeFlow, flowEmailsC, flowEmailsR, flowEmailsCFull, flowEmailsRFull]);
     //Actualmente trabaja con dos flujos. Más info en: https://www.builderbot.app/en/methods
 
     /**
