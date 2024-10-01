@@ -12,6 +12,7 @@ import flowEmailsCFull from './flows/flow-C-full'
 import flowEmailsRFull from './flows/flow-R-full'
 import flowWeather from "./flows/flow-weather"
 import flowForecast from "./flows/flow-forecast"
+import flowCurrency from './flows/flow-currency'
 
 /** Puerto en el que se ejecutará el servidor */
 const PORT = process.env.PORT ?? 3008
@@ -101,7 +102,8 @@ const main = async () => {
             flowEmailsCFull,
             flowEmailsRFull,
             flowWeather,
-            flowForecast]);
+            flowForecast,
+            flowCurrency]);
     //Actualmente trabaja con seis flujos. Más info en: https://www.builderbot.app/en/methods
 
     /**

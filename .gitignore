@@ -10,7 +10,7 @@ tmp/*
 
 *.log
 *qr.png
-token.json
-credentials.json
+token*.json
+credentials*.json
 src/utils/mail-myAPI.ts
 src/utils/mail-manager-single-account.ts
