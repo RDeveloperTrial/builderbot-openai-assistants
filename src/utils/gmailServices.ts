@@ -49,7 +49,7 @@ async function getEmails(appClient) {
         
         /** Message in case there's no emails */
         if (!messages || messages.length === 0) {
-            console.log('No hay correos electrónicos.');
+            console.log( 'No hay correos electrónicos.');
             return;
           }
 
