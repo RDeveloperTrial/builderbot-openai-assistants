@@ -9,7 +9,10 @@ const flowWeather = addKeyword('dameWeather')
     .addAction(async (ctx, { state, flowDynamic }) => {
         const city = state.get('city')
         const weather = await getWeatherByCity(city)
-        await flowDynamic(weather)
+        if (weather != undefined) {
+            await flowDynamic(weather)
+        } else
+            await flowDynamic('No se han podido encontrar las coordenadas de la ciudad especificada. Por favor prueba con otros términos de búsqueda')
 
     })
 

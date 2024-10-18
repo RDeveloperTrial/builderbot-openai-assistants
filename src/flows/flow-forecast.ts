@@ -9,9 +9,13 @@ const flowForecast = addKeyword('dameForecast')
     .addAction(async (ctx, { state, flowDynamic }) => {
         const city = state.get('city')
         const forecastObjects = await getForecastByCity(city)
-        forecastObjects.forEach(async obj => {
-            await flowDynamic(obj)
-        })
+        if (forecastObjects != undefined) {
+            forecastObjects.forEach(async obj => {
+                await flowDynamic(obj)
+            })
+        } else
+            await flowDynamic('No se han podido encontrar las coordenadas de la ciudad especificada. Por favor prueba con otros términos de búsqueda')
+        
         
     })
 

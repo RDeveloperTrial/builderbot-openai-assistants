@@ -12,8 +12,8 @@ const flowCurrency = addKeyword('dameCurrency')
     .addAction(async (ctx, { state, flowDynamic }) => {
         const div1 = state.get('div1')
         const div2 = state.get('div2')
-        const weather = await callExchange(div1,div2)
-        await flowDynamic(weather)
+        const exchange = await callExchange(div1,div2)
+        await flowDynamic(exchange)
 
     })
 
