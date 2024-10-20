@@ -95,6 +95,7 @@ async function getWeatherForecast(lat: number, lon: number) {
                 lat: lat,
                 lon: lon,
                 appid: OPEN_WEATHER_KEY,
+                cnt: 5, //Limita el número de items en la lista
                 units: 'metric', // Esto devolverá las temperaturas en grados Celsius
             },
         });
@@ -106,7 +107,7 @@ async function getWeatherForecast(lat: number, lon: number) {
         const intro = `Pronóstico para ${forecast.city.name}, ${forecast.city.country}:`;
         const weatherArray = [];
         weatherArray.push(intro)
-        forecast.list.slice(0, 5).forEach((entry: any) => {
+        forecast.list.forEach((entry) => {
             const dateTime = new Date(entry.dt * 1000)
             const date = dateTime.toLocaleDateString();
             const time = dateTime.toLocaleTimeString([],{hour: '2-digit', minute:'2-digit'});
