@@ -38,10 +38,10 @@ async function getExchangeRate(div1, div2) {
 
 // Función principal para invocar la obtención de tasa de cambio y otras funcionalidades
 async function callExchange(div1, div2) {
-  const exchangeRate = await getExchangeRate(div1, div2);
+  const exchangeRate = await getExchangeRate(div1.toUpperCase(), div2.toUpperCase());
   
   if (exchangeRate !== null) {
-    return `Tasa de cambio USD-EUR: ${exchangeRate}`;
+    return `Tasa de cambio ${div1.toUpperCase()}-${div2.toUpperCase()}: ${exchangeRate}`;
   } else {
     return 'No se pudo obtener la tasa de cambio.';
   }
