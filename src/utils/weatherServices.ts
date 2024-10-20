@@ -1,4 +1,6 @@
 import axios from 'axios';
+import moment from 'moment-timezone'; 
+import tzlookup from 'tz-lookup'; //Determina zona horaria en función de coordenadas
 
 // Define la URL base y tu API Key
 const OPEN_WEATHER_KEY = process.env.OPEN_WEATHER_KEY;
@@ -103,14 +105,16 @@ async function getWeatherForecast(lat: number, lon: number) {
         // La respuesta de la API contiene el pronóstico
         const forecast = response.data;
 
+        const timezone = tzlookup(lat,lon); // Determinar la zona horaria desde las coordenadas
+        
         // Mostrar algunos detalles del pronóstico en la consola
         const intro = `Pronóstico para ${forecast.city.name}, ${forecast.city.country}:`;
         const weatherArray = [];
         weatherArray.push(intro)
         forecast.list.forEach((entry) => {
-            const dateTime = new Date(entry.dt * 1000)
-            const date = dateTime.toLocaleDateString();
-            const time = dateTime.toLocaleTimeString([],{hour: '2-digit', minute:'2-digit'});
+            const dateTime = moment.utc(entry.dt * 1000).tz(timezone); // Convertir UTC a zona horaria local
+            const date = dateTime.format('DD-MM-YYYY'); // Formato de fecha
+            const time = dateTime.format('HH:mm'); // Formato de hora
             const weather =
                 `   ${date}
                 🕙: ${time}
