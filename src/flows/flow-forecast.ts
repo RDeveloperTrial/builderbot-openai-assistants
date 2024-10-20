@@ -10,7 +10,7 @@ const flowForecast = addKeyword('dameForecast')
         const city = state.get('city')
         const forecastObjects = await getForecastByCity(city)
         if (forecastObjects != undefined) {
-            for (let obj of forecastObjects){ //For of instead of forEach allows for the text flow to be in order
+            for (const obj of forecastObjects){ //For of instead of forEach allows for the text flow to be in order
                 await flowDynamic(obj)
             }
         } else
