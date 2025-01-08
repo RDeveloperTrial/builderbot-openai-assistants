@@ -49,13 +49,13 @@ async function getCurrentWeather(lat: number, lon: number) {
 
         const weatherData = response.data;
 
-        // Mostrar algunos detalles del clima actual en la consola
+        // Mostrar algunos detalles del clima actual en la consola //🧽🧼💧
         const weather =
             `Clima actual para ${weatherData.name}, ${weatherData.sys.country}:
             🌡️: ${Math.round(weatherData.main.temp)}°C
             ⛅️: ${weatherData.weather[0].description}
-            💧: ${weatherData.main.humidity}%
-            💨: ${weatherData.wind.speed} m/s`
+            😅: ${weatherData.main.humidity}%
+            🌬️: ${weatherData.wind.speed} m/s` 
         return weather
     } catch (error) {
         console.error('Error al obtener el clima actual:', error);
