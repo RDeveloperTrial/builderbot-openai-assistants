@@ -1,3 +1,4 @@
+//*** Documentación: https://rapidapi.com/letscrape-6bRBa3QguO5/api/real-time-amazon-data */
 import axios from 'axios';
 
 const AMAZON_RAPIDAPI_KEY = process.env.RAPIDAPI_KEY;
@@ -32,12 +33,13 @@ async function searchAmazonProducts(query, page) {
         products.forEach((product, index) => {
             const productObj = Object.create({})
             productObj.index = index
+            productObj.asin = product.asin
             productObj.titulo = product.product_title
             productObj.precio = product.product_price
             productObj.url = product.product_url
             productObj.calificación = product.product_star_rating
             productObj.numopiniones = product.product_num_ratings
-            productObj.entrega = product.delivery
+            //productObj.entrega = product.delivery
 
             productsArray.push(productObj)
         })

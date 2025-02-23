@@ -27,12 +27,10 @@ function formatText(product) {
     return `----------------------------
     💵 *${product.precio}* 
 
-    *${product.titulo}*
+    *${product.titulo}* ( ${product.asin} )
     
-    *${product.calificación}* ⭐️
-    ${product.numopiniones} opiniones
+    *${product.calificación}* ⭐️ ( ${product.numopiniones} opiniones )
     
-    ${product.entrega}
     ${product.url}
     ----------------------------`;
 
