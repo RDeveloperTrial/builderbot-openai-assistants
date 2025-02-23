@@ -10,7 +10,7 @@ let REFRESH_TOKEN = process.env.REFRESH_TOKEN;
 /**
  * Returns an array of email objects that meet a certain criteria 
  * @param appClient Integer number determining which user is requesting de email retrieval
- * @returns Array of objects
+ * @returns Array of email objects
  */
 async function getEmails(appClient) {
     /** User selection (via appClient argument) **/

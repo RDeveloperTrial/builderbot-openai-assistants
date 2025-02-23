@@ -1,9 +1,11 @@
+//*** Documentación: 
+// https://rapidapi.com/principalapis/api/currency-conversion-and-exchange-rates */
 import axios from 'axios';
 
 const EXCHANGE_RATE_API_URL = 'https://currency-conversion-and-exchange-rates.p.rapidapi.com/latest';
 
 // Reemplaza estos valores con tu información de RapidAPI
-const RAPIDAPI_KEY = process.env.EXCHANGE_RATE_KEY;
+const RAPIDAPI_KEY = process.env.RAPIDAPI_KEY;
 const RAPIDAPI_HOST = 'currency-conversion-and-exchange-rates.p.rapidapi.com';
 
 // Función para obtener la tasa de cambio USD-EUR desde RapidAPI

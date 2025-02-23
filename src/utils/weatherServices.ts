@@ -1,3 +1,6 @@
+//*** Documentación: 
+//https://openweathermap.org/current */
+
 import axios from 'axios';
 import moment from 'moment-timezone'; 
 import tzlookup from 'tz-lookup'; //Determina zona horaria en función de coordenadas
@@ -73,7 +76,7 @@ async function getWeatherByCity(city: string) {
     }
 }
 
-// Función principal para obtener el clima actual por nombre de ciudad
+// Función principal para obtener la predicción por nombre de ciudad
 async function getForecastByCity(city: string) {
     // Obtener las coordenadas de la ciudad
     const coordinates = await getCoordinates(city);

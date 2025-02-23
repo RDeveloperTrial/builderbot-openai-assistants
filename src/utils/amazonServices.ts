@@ -1,4 +1,5 @@
-//*** Documentación: https://rapidapi.com/letscrape-6bRBa3QguO5/api/real-time-amazon-data */
+//*** Documentación: 
+// https://rapidapi.com/letscrape-6bRBa3QguO5/api/real-time-amazon-data */
 import axios from 'axios';
 
 const AMAZON_RAPIDAPI_KEY = process.env.RAPIDAPI_KEY;

@@ -1,7 +1,9 @@
+//*** Documentación: 
+// https://rapidapi.com/ntd119/api/sky-scanner3/ */
 import axios from 'axios';
 
 
-const RAPIDAPI_KEY = process.env.FLIGHTS_RAPIDAPI_KEY;
+const RAPIDAPI_KEY = process.env.RAPIDAPI_KEY;
 const RAPIDAPI_HOST = 'sky-scanner3.p.rapidapi.com';
 
 const flightsFormatted = []
@@ -83,11 +85,6 @@ function formatFlight(rawFlight) {
     flight.llegada = rawFlight.legs[0].arrival
     flight.compañía = rawFlight.legs[0].carriers.marketing[0].name
     flight.precio = rawFlight.price.formatted
-    /*
-    console.log(`Horario de salida: ${rawFlight.legs[0].departure}`);
-    console.log(`Horario de llegada: ${rawFlight.legs[0].arrival}`);
-    console.log(`Compañía operadora: ${rawFlight.legs[0].carriers.marketing[0].name}`);
-    console.log(`Precio total: ${rawFlight.price.formatted} `);*/
 
     flightsFormatted.push(flight);
 

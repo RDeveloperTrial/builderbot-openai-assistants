@@ -1,3 +1,6 @@
+//*** Documentación: 
+//https://docs.diffbot.com/reference/introduction-to-diffbot-apis?utm_source=dashboard */
+
 const apiKey = process.env.DIFFBOT;
 
 async function getArticle(url: string): Promise<string | undefined> {

@@ -33,11 +33,11 @@ const flowFlights = addKeyword('buscaVuelo')
 
 
 function formatText(information) {
-    const dateDeparture = new Date(information.salida);
-    const dateArrival = new Date(information.llegada)
+    let dateDeparture = new Date(information.salida);
+    let dateArrival = new Date(information.llegada)
 
     let stopsText = ""
-    const baseText = `--------------------
+    let baseText = `--------------------
     *Origen:* ${information.origen} ${moment(dateDeparture).format("HH:mm")}
     *Destino:* ${information.destino} ${moment(dateArrival).format("HH:mm")}
     *Duración:* ${information.duración} mins
@@ -47,7 +47,7 @@ function formatText(information) {
             `
     if (information.paradas) {
         stopsText += "Paradas:\n";
-        for (const stop of information.stops) {
+        for (let stop of information.stops) {
             stopsText += `
         *${stop.origin}* (${moment(stop.departure).format('MMM Do, *h:mm*')})
         *${stop.destination}* (${moment(stop.arrival).format('MMM Do, *h:mm*')})
@@ -57,13 +57,6 @@ function formatText(information) {
     } else {
         stopsText += "Vuelo directo"
     }
-   /* const detailsText = `
-    Horario de salida: ${information.salida}
-    
-    Horario de llegada: ${information.llegada}
-    
-    
-    `*/
 
     return `${baseText}
     ${stopsText}`;

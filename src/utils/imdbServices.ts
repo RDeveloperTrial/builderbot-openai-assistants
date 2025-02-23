@@ -1,3 +1,6 @@
+//*** Documentación: 
+// https://rapidapi.com/octopusteam-octopusteam-default/api/imdb236/ */
+
 import axios from 'axios';
 
 // Tu clave de API de RapidAPI
