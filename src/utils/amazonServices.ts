@@ -50,4 +50,38 @@ async function searchAmazonProducts(query, page) {
     }
 }
 
-export { searchAmazonProducts }
+//Función para buscar los detalles de un producto dado su identificador ASIN
+async function retrieveProductDetails(productASIN) {
+    try {
+        const options = {
+            method: 'GET',
+            url: `https://${RAPIDAPI_HOST}/product-details`,
+            params: {
+                asin: productASIN,        // El ID del producto 
+                country: 'US'
+            },
+            headers: {
+                'X-RapidAPI-Key': AMAZON_RAPIDAPI_KEY,
+                'X-RapidAPI-Host': RAPIDAPI_HOST
+            }
+        };
+
+        const response = await axios.request(options);
+
+        const details = response.data.data;
+        console.log(response.data)
+        if (!details || details.length === 0) {
+            console.log('No se encontraron detalles del producto.');
+            return;
+        }
+
+        return details
+    } catch (error) {
+        console.error('Error al buscar detalles del producto en Amazon:', error);
+    }
+}
+
+
+
+
+export { searchAmazonProducts, retrieveProductDetails }

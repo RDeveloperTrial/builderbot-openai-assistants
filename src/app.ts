@@ -19,6 +19,7 @@ import flowAmazon from './flows/flow-amazon'
 import flowIMDB from './flows/flow-imdb'
 import flowIMDBdetails from "./flows/flow-imdbDetails"
 import flowWeb from "./flows/flow-web"
+import flowAmazonDetail from "./flows/flow-aznDetail"
 
 /** Puerto en el que se ejecutará el servidor */
 const PORT = process.env.PORT ?? 3008
@@ -113,6 +114,7 @@ const main = async () => {
             flowYahoo,
             flowFlights,
             flowAmazon,
+            flowAmazonDetail,
             flowIMDB,
             flowIMDBdetails,
             flowWeb]);
