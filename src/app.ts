@@ -20,6 +20,7 @@ import flowIMDB from './flows/flow-imdb'
 import flowIMDBdetails from "./flows/flow-imdbDetails"
 import flowWeb from "./flows/flow-web"
 import flowAmazonDetail from "./flows/flow-aznDetail"
+import flowAurora from "./flows/flow-aurora"
 
 /** Puerto en el que se ejecutará el servidor */
 const PORT = process.env.PORT ?? 3008
@@ -117,7 +118,8 @@ const main = async () => {
             flowAmazonDetail,
             flowIMDB,
             flowIMDBdetails,
-            flowWeb]);
+            flowWeb,
+            flowAurora]);
     //Más info en: https://www.builderbot.app/en/methods
 
     /**
