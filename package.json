@@ -21,6 +21,7 @@
     "dotenv": "^16.5.0",
     "globals": "^15.15.0",
     "googleapis": "^105.0.0",
+    "html-to-text": "^9.0.5",
     "imap-simple": "^5.1.0",
     "moment-timezone": "^0.5.48",
     "sharp": "^0.34.4",
