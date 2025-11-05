@@ -24,6 +24,7 @@
     "html-to-text": "^9.0.5",
     "imap-simple": "^5.1.0",
     "moment-timezone": "^0.5.48",
+    "quoted-printable": "^1.0.1",
     "sharp": "^0.34.4",
     "tz-lookup": "^6.1.25"
   },

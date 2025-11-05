@@ -50,6 +50,9 @@ importers:
       moment-timezone:
         specifier: ^0.5.48
         version: 0.5.48
+      quoted-printable:
+        specifier: ^1.0.1
+        version: 1.0.1
       sharp:
         specifier: ^0.34.4
         version: 0.34.4
