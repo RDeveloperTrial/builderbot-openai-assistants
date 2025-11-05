@@ -8,43 +8,47 @@ const apiKey = process.env.RAPIDAPI_KEY;
 
 // Función para obtener detalles de la película
 async function getMovie(movieTitle) {
+
     const options = {
         method: 'GET',
-        url: 'https://imdb236.p.rapidapi.com/imdb/search',
+        url: 'https://imdb236.p.rapidapi.com/api/imdb/search',
         params: {
             originalTitle: movieTitle,
+            rows: '10',
+            sortOrder: 'DESC',
+            sortField: 'startYear'
         },
         headers: {
-          'x-rapidapi-key': apiKey,
-          'x-rapidapi-host': 'imdb236.p.rapidapi.com'
+            'x-rapidapi-key': apiKey,
+            'x-rapidapi-host': 'imdb236.p.rapidapi.com'
         }
-      };
-      
-      try {
-          const response = await axios.request(options);
-          return response.data;
-      } catch (error) {
-          console.error(error);
-      }
-    
+    };
+
+    try {
+        const response = await axios.request(options);
+        return response.data;
+    } catch (error) {
+        console.error(error);
+    }
+
 }
 
 async function getMovieDetails(movieID) {
     const options = {
         method: 'GET',
-        url: 'https://imdb236.p.rapidapi.com/imdb/' + movieID,
+        url: 'https://imdb236.p.rapidapi.com/api/imdb/' + movieID,
         headers: {
-          'x-rapidapi-key': apiKey,
-          'x-rapidapi-host': 'imdb236.p.rapidapi.com'
+            'x-rapidapi-key': apiKey,
+            'x-rapidapi-host': 'imdb236.p.rapidapi.com'
         }
-      };
-      
-      try {
-          const response = await axios.request(options);
-          return response.data;
-      } catch (error) {
-          console.error(error);
-      }
+    };
+
+    try {
+        const response = await axios.request(options);
+        return response.data;
+    } catch (error) {
+        console.error(error);
+    }
 }
 
 
