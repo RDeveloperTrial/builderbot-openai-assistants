@@ -126,10 +126,10 @@ const main = async () => {
      * Proveedor de servicios de mensajería
      * @type {BaileysProvider}
      */
-    const adapterProvider = createProvider(BaileysProvider, {
-        groupsIgnore: true,
-        readStatus: false,
-    });
+    const adapterProvider = createProvider(BaileysProvider, { 
+        version: [2, 3000, 1030817285] 
+    } );
+
 
     /**
      * Base de datos en memoria para el bot

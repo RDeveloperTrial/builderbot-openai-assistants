@@ -18,11 +18,11 @@ importers:
         specifier: ^0.0.2
         version: 0.0.2(ws@8.18.3)(zod@3.25.76)
       '@builderbot/bot':
-        specifier: 1.3.5
-        version: 1.3.5
+        specifier: 1.3.15
+        version: 1.3.15
       '@builderbot/provider-baileys':
-        specifier: 1.3.5
-        version: 1.3.5
+        specifier: ^1.3.15
+        version: 1.3.15
       '@eslint/eslintrc':
         specifier: ^3.3.1
         version: 3.3.1
@@ -152,11 +152,11 @@ packages:
   '@builderbot-plugins/openai-assistants@0.0.2':
     resolution: {integrity: sha512-BYls4XJc1prdyo4oVQIma2q52T8VT3OLhEtZKKOusATuqFrkQN+q/h/KlZwkwLaxZgOnYKq3EKarSe3NJLP9Xg==}
 
-  '@builderbot/bot@1.3.5':
-    resolution: {integrity: sha512-abhp/enQ50HSggar/KJom4I1o7rYEllT8cRwyCpgF/DiGTWBPlDNmz6vfLPMWT4ZBh8I2Dr7wU0rhMpWnt3HLw==}
+  '@builderbot/bot@1.3.15':
+    resolution: {integrity: sha512-g5ofmOTp0ixcQfOBi0wb90ePhGu0lpwZUtryY5/6D/5bYOcHyX6078IYwTm1T2Vn2gTj3c8sIF9r2gGasUSG3g==}
 
-  '@builderbot/provider-baileys@1.3.5':
-    resolution: {integrity: sha512-r60VCTCXfp7zk/WtL13M0c2KyKJLZb96Jht6WfmthlQ+aIXjetZnWUMLFa4amKNzbILjqRIsDjrYxrLLgmjwBA==}
+  '@builderbot/provider-baileys@1.3.15':
+    resolution: {integrity: sha512-CfqqZ69RTmOlJnG1aJ8PYVynUluWzdzLKkS10cnENQaTGSlopDI9huDHBskrrfU7+jqdYfGnxy3I3Ru/4nop7Q==}
 
   '@cacheable/memoize@2.0.3':
     resolution: {integrity: sha512-hl9wfQgpiydhQEIv7fkjEzTGE+tcosCXLKFDO707wYJ/78FVOlowb36djex5GdbSyeHnG62pomYLMuV/OT8Pbw==}
@@ -1124,8 +1124,8 @@ packages:
   '@vue/shared@3.5.22':
     resolution: {integrity: sha512-F4yc6palwq3TT0u+FYf0Ns4Tfl9GRFURDN2gWG7L1ecIaS/4fCIuFOjMTnCyjsu/OK6vaDKLCrGAa+KvvH+h4w==}
 
-  '@whiskeysockets/libsignal-node@https://codeload.github.com/whiskeysockets/libsignal-node/tar.gz/e81ecfc32eb74951d789ab37f7e341ab66d5fff1':
-    resolution: {tarball: https://codeload.github.com/whiskeysockets/libsignal-node/tar.gz/e81ecfc32eb74951d789ab37f7e341ab66d5fff1}
+  '@whiskeysockets/libsignal-node@https://codeload.github.com/whiskeysockets/libsignal-node/tar.gz/1c30d7d7e76a3b0aa120b04dc6a26f5a12dccf67':
+    resolution: {tarball: https://codeload.github.com/whiskeysockets/libsignal-node/tar.gz/1c30d7d7e76a3b0aa120b04dc6a26f5a12dccf67}
     version: 2.0.1
 
   abort-controller@3.0.0:
@@ -1209,8 +1209,8 @@ packages:
   axios@1.13.1:
     resolution: {integrity: sha512-hU4EGxxt+j7TQijx1oYdAjw4xuIp1wRQSsbMFwSthCWeBQur1eF+qJ5iQ5sN3Tw8YRzQNKb8jszgBdMDVqwJcw==}
 
-  baileys@7.0.0-rc.5:
-    resolution: {integrity: sha512-y95gW7UtKbD4dQb46G75rnr0U0LtnBItA002ARggDiCgm92Z8wnM+wxqC8OI/sDFanz3TgzqE4t7MPwNusUqUQ==}
+  baileys@7.0.0-rc.9:
+    resolution: {integrity: sha512-Txd2dZ9MHbojvsHckeuCnAKPO/bQjKxua/0tQSJwOKXffK5vpS82k4eA/Nb46K0cK0Bx+fyY0zhnQHYMBriQcw==}
     engines: {node: '>=20.0.0'}
     peerDependencies:
       audio-decode: ^2.1.3
@@ -1241,8 +1241,8 @@ packages:
   bmp-ts@1.0.9:
     resolution: {integrity: sha512-cTEHk2jLrPyi+12M3dhpEbnnPOsaZuq7C45ylbbQIiWgDFZq4UVYPEY5mlqjvsj/6gJv9qX5sa+ebDzLXT28Vw==}
 
-  body-parser@1.20.3:
-    resolution: {integrity: sha512-7rAxByjUMqQ3/bHJy7D6OGXvx/MMc4IqBn/X0fcM1QUcAItpZrBEYhWGem+tzXH90c+G01ypMcYJBO9Y30203g==}
+  body-parser@1.20.4:
+    resolution: {integrity: sha512-ZTgYYLMOXY9qKU/57FAo8F+HA2dGX7bqGc71txDRC1rS4frdFI5R7NhluHxH6M0YItAP0sHB4uqAOcYKxO6uGA==}
     engines: {node: '>= 0.8', npm: 1.2.8000 || >= 1.4.16}
 
   boolbase@1.0.0:
@@ -1796,8 +1796,8 @@ packages:
   htmlparser2@8.0.2:
     resolution: {integrity: sha512-GYdjWKDkbRLkZ5geuHs5NY1puJ+PXwP7+fHPRz06Eirsb9ugf6d8kkXav6ADhcODhFFPMIXyxkxSuMf3D6NCFA==}
 
-  http-errors@2.0.0:
-    resolution: {integrity: sha512-FtwrG/euBzaEjYeRqOgly7G0qviiXoJWnvEH2Z1plBdXgbyjv34pHTSb9zoeHMyDy33+DWy5Wt9Wo+TURtOYSQ==}
+  http-errors@2.0.1:
+    resolution: {integrity: sha512-4FbRdAX+bSdmo4AUFuS0WNiPz8NgFt+r8ThgNWmlrjQjt1Q7ZR9+zTlce2859x4KSXrwIsaeTqDoKQmtP8pLmQ==}
     engines: {node: '>= 0.8'}
 
   https-proxy-agent@5.0.1:
@@ -2335,10 +2335,6 @@ packages:
     resolution: {integrity: sha512-+BtFN3dCP+IaFA6IYNOu/f/uK1B8xD2QWyOeCse0rjtAebBmkzgd2d1OAXi3ikAzJMIBSdzZDNZ3wZKEUDQs5w==}
     engines: {node: '>=20'}
 
-  qs@6.13.0:
-    resolution: {integrity: sha512-+38qI9SOr8tfZ4QmJNplMUxqjbe7LKvvZgWdExBOmd+egZTtjLB67Gu0HRX3u/XOq7UU2Nx6nsjvS16Z9uwfpg==}
-    engines: {node: '>=0.6'}
-
   qs@6.14.0:
     resolution: {integrity: sha512-YWWTjgABSKcvs/nWBi9PycY/JiPJqOD4JA6o9Sej2AtvSGarXxKC3OQSk4pAarbdQlKAh5D4FCQkJNkW+GAn3w==}
     engines: {node: '>=0.6'}
@@ -2353,8 +2349,8 @@ packages:
     resolution: {integrity: sha512-cihC68OcGiQOjGiXuo5Jk6XHANTHl1K4JLk/xlEJRTIXfy19Sg6XzB95XonYgr+1rB88bCpr7WZE7D7AlZow4g==}
     hasBin: true
 
-  raw-body@2.5.2:
-    resolution: {integrity: sha512-8zGqypfENjCIqGhgXToC8aB2r7YrBX+AQAfIPs/Mlk+BtPTztOvTS01NRW/3Eh60J+a48lt8qsCzirQ6loCVfA==}
+  raw-body@2.5.3:
+    resolution: {integrity: sha512-s4VSOf6yN0rvbRZGxs8Om5CWj6seneMwK3oDb4lWDH0UPhWcxwOWw5+qk24bxq87szX1ydrwylIOp2uG1ojUpA==}
     engines: {node: '>= 0.8'}
 
   readable-stream@1.1.14:
@@ -2519,8 +2515,8 @@ packages:
   sprintf-js@1.0.3:
     resolution: {integrity: sha512-D9cPgkvLlV3t3IzL0D0YLvGA9Ahk4PcvVwUbN0dSGr1aP0Nrt4AEnTUbuGvquEC0mA64Gqt1fzirlRs5ibXx8g==}
 
-  statuses@2.0.1:
-    resolution: {integrity: sha512-RwNA9Z/7PrK06rYLIzFMlaF+l73iwpzsqRIFgbMLbTcLD6cOao82TaWefPXQvB2fOC4AjuYSEndS7N/mTCbkdQ==}
+  statuses@2.0.2:
+    resolution: {integrity: sha512-DvEy55V3DB7uknRo+4iOGT5fP1slR8wQohVdknigZPMpMstaKJQWhwiYBACJE3Ul2pTnATihhBYnRhZQHGBiRw==}
     engines: {node: '>= 0.8'}
 
   streamsearch@1.1.0:
@@ -2835,7 +2831,7 @@ snapshots:
 
   '@builderbot-plugins/openai-assistants@0.0.2(ws@8.18.3)(zod@3.25.76)':
     dependencies:
-      '@builderbot/bot': 1.3.5
+      '@builderbot/bot': 1.3.15
       multer: 1.4.5-lts.1
       openai: 4.104.0(ws@8.18.3)(zod@3.25.76)
       polka: 0.5.2
@@ -2846,10 +2842,10 @@ snapshots:
       - ws
       - zod
 
-  '@builderbot/bot@1.3.5':
+  '@builderbot/bot@1.3.15':
     dependencies:
       '@ffmpeg-installer/ffmpeg': 1.1.0
-      body-parser: 1.20.3
+      body-parser: 1.20.4
       cors: 2.8.5
       fluent-ffmpeg: 2.1.3
       follow-redirects: 1.15.11
@@ -2862,12 +2858,12 @@ snapshots:
       - debug
       - supports-color
 
-  '@builderbot/provider-baileys@1.3.5':
+  '@builderbot/provider-baileys@1.3.15':
     dependencies:
       '@adiwajshing/keyed-db': 0.2.4
       '@ffmpeg-installer/ffmpeg': 1.1.0
       '@types/polka': 0.5.8
-      baileys: 7.0.0-rc.5(jimp@1.6.0)(sharp@0.33.3)
+      baileys: 7.0.0-rc.9(jimp@1.6.0)(sharp@0.33.3)
       cheerio: 1.1.2
       fluent-ffmpeg: 2.1.3
       fs-extra: 11.3.2
@@ -3791,7 +3787,7 @@ snapshots:
 
   '@vue/shared@3.5.22': {}
 
-  '@whiskeysockets/libsignal-node@https://codeload.github.com/whiskeysockets/libsignal-node/tar.gz/e81ecfc32eb74951d789ab37f7e341ab66d5fff1':
+  '@whiskeysockets/libsignal-node@https://codeload.github.com/whiskeysockets/libsignal-node/tar.gz/1c30d7d7e76a3b0aa120b04dc6a26f5a12dccf67':
     dependencies:
       curve25519-js: 0.0.4
       protobufjs: 6.8.8
@@ -3870,12 +3866,12 @@ snapshots:
     transitivePeerDependencies:
       - debug
 
-  baileys@7.0.0-rc.5(jimp@1.6.0)(sharp@0.33.3):
+  baileys@7.0.0-rc.9(jimp@1.6.0)(sharp@0.33.3):
     dependencies:
       '@cacheable/node-cache': 1.7.4
       '@hapi/boom': 9.1.4
       async-mutex: 0.5.0
-      libsignal: '@whiskeysockets/libsignal-node@https://codeload.github.com/whiskeysockets/libsignal-node/tar.gz/e81ecfc32eb74951d789ab37f7e341ab66d5fff1'
+      libsignal: '@whiskeysockets/libsignal-node@https://codeload.github.com/whiskeysockets/libsignal-node/tar.gz/1c30d7d7e76a3b0aa120b04dc6a26f5a12dccf67'
       lru-cache: 11.2.2
       music-metadata: 11.9.0
       p-queue: 9.0.0
@@ -3900,18 +3896,18 @@ snapshots:
 
   bmp-ts@1.0.9: {}
 
-  body-parser@1.20.3:
+  body-parser@1.20.4:
     dependencies:
       bytes: 3.1.2
       content-type: 1.0.5
       debug: 2.6.9
       depd: 2.0.0
       destroy: 1.2.0
-      http-errors: 2.0.0
+      http-errors: 2.0.1
       iconv-lite: 0.4.24
       on-finished: 2.4.1
-      qs: 6.13.0
-      raw-body: 2.5.2
+      qs: 6.14.0
+      raw-body: 2.5.3
       type-is: 1.6.18
       unpipe: 1.0.0
     transitivePeerDependencies:
@@ -4604,12 +4600,12 @@ snapshots:
       domutils: 3.2.2
       entities: 4.5.0
 
-  http-errors@2.0.0:
+  http-errors@2.0.1:
     dependencies:
       depd: 2.0.0
       inherits: 2.0.4
       setprototypeof: 1.2.0
-      statuses: 2.0.1
+      statuses: 2.0.2
       toidentifier: 1.0.1
 
   https-proxy-agent@5.0.1:
@@ -5169,10 +5165,6 @@ snapshots:
     dependencies:
       hookified: 1.12.2
 
-  qs@6.13.0:
-    dependencies:
-      side-channel: 1.1.0
-
   qs@6.14.0:
     dependencies:
       side-channel: 1.1.0
@@ -5185,10 +5177,10 @@ snapshots:
     dependencies:
       utf8: 2.1.2
 
-  raw-body@2.5.2:
+  raw-body@2.5.3:
     dependencies:
       bytes: 3.1.2
-      http-errors: 2.0.0
+      http-errors: 2.0.1
       iconv-lite: 0.4.24
       unpipe: 1.0.0
 
@@ -5425,7 +5417,7 @@ snapshots:
 
   sprintf-js@1.0.3: {}
 
-  statuses@2.0.1: {}
+  statuses@2.0.2: {}
 
   streamsearch@1.1.0: {}
 
