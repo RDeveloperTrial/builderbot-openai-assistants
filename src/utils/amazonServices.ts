@@ -5,16 +5,30 @@ import axios from 'axios';
 const AMAZON_RAPIDAPI_KEY = process.env.RAPIDAPI_KEY;
 const RAPIDAPI_HOST = 'real-time-amazon-data.p.rapidapi.com';
 
-// Función para buscar productos en Amazon US
-async function searchAmazonProducts(query, page) {
+// Función para buscar productos en Amazon US o ES
+async function searchAmazonProducts(query, country, page) {
+    // 1. Validación de país: Solo permitimos US o ES
+    const validCountries = ['US', 'ES'];
+    const selectedCountry = country?.toUpperCase();
+
+    if (!validCountries.includes(selectedCountry)) {
+        throw new Error(`País no soportado. Por favor usa: ${validCountries.join(', ')}`);
+    }
+
+    // 2. Validación de búsqueda
+    if (!query) {
+        console.warn('El término de búsqueda está vacío.');
+        return [];
+    }
+
     try {
         const options = {
             method: 'GET',
             url: `https://${RAPIDAPI_HOST}/search`,
             params: {
-                query: query,        // El término de búsqueda (producto, marca, etc.)
-                country: 'US',       // Mercado de Amazon (US para Amazon en Estados Unidos)
-                page: page           // Número de página de los resultados de búsqueda
+                query: query,
+                country: selectedCountry, // Dinámico según el parámetro
+                page: page
             },
             headers: {
                 'X-RapidAPI-Key': AMAZON_RAPIDAPI_KEY,
@@ -26,28 +40,30 @@ async function searchAmazonProducts(query, page) {
         const products = response.data.data.products;
 
         if (!products || products.length === 0) {
-            console.log('No se encontraron productos.');
-            return;
+            console.log(`No se encontraron productos en Amazon ${selectedCountry}.`);
+            return [];
         }
 
-        const productsArray = []
-        products.forEach((product, index) => {
-            const productObj = Object.create({})
-            productObj.index = index
-            productObj.asin = product.asin
-            productObj.titulo = product.product_title
-            productObj.precio = product.product_price
-            productObj.url = product.product_url
-            productObj.calificación = product.product_star_rating
-            productObj.numopiniones = product.product_num_ratings
-            //productObj.entrega = product.delivery
+        // 3. Limitar a 5 resultados y formatear
+        // Usamos .slice(0, 5) para tomar solo los primeros 5 elementos
+        const productsArray = products.slice(0, 5).map((product, index) => {
+            return {
+                index: index,
+                asin: product.asin,
+                titulo: product.product_title,
+                precio: product.product_price,
+                url: product.product_url,
+                calificación: product.product_star_rating,
+                numopiniones: product.product_num_ratings,
+                tienda: selectedCountry // De momento no se usa, pero lo guardamos por si queremos mostrarlo luego
+            };
+        });
 
-            productsArray.push(productObj)
-        })
+        return productsArray;
 
-        return productsArray
     } catch (error) {
-        console.error('Error al buscar productos en Amazon:', error);
+        console.error(`Error al buscar productos en Amazon ${selectedCountry}:`, error.message);
+        throw error;
     }
 }
 

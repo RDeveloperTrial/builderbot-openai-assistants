@@ -2,6 +2,9 @@ import { addKeyword } from '@builderbot/bot';
 import { searchAmazonProducts } from "../utils/amazonServices"
 
 const flowAmazon = addKeyword('deditofeliz')
+    .addAnswer(`Tienda (US o ES): `, { capture: true }, async (ctx, { state }) => {
+        await state.update({ tienda: ctx.body })
+    })
     .addAnswer(`Términos de búsqueda: `, { capture: true }, async (ctx, { state }) => {
         await state.update({ termino: ctx.body })
     })
@@ -10,9 +13,10 @@ const flowAmazon = addKeyword('deditofeliz')
     })
 
     .addAction(async (ctx, { state, flowDynamic }) => {
+        const tienda = state.get('tienda')
         const termino = state.get('termino')
         const pagina = state.get('pagina')
-        const results = await searchAmazonProducts(termino, pagina)
+        const results = await searchAmazonProducts(termino, tienda, pagina)
         if (results != undefined) {
             for (const product of results) {
                 await flowDynamic(formatTextProduct(product))
@@ -23,7 +27,7 @@ const flowAmazon = addKeyword('deditofeliz')
 
 
 function formatTextProduct(product) {
-//( ${product.asin} ) Ya viene al final de la url del producto
+    //( ${product.asin} ) Ya viene al final de la url del producto
     return `----------------------------
     💵 *${product.precio}* 
 
