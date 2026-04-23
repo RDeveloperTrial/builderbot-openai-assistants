@@ -6,16 +6,11 @@ const AMAZON_RAPIDAPI_KEY = process.env.RAPIDAPI_KEY;
 const RAPIDAPI_HOST = 'real-time-amazon-data.p.rapidapi.com';
 
 // Función para buscar productos en Amazon US o ES
-async function searchAmazonProducts(query, country, page) {
-    // 1. Validación de país: Solo permitimos US o ES
-    const validCountries = ['US', 'ES'];
-    const selectedCountry = country?.toUpperCase();
+async function searchAmazonProducts(query, country, page = 1) {
+    
+    const selectedCountry = validateCountry(country);
 
-    if (!validCountries.includes(selectedCountry)) {
-        throw new Error(`País no soportado. Por favor usa: ${validCountries.join(', ')}`);
-    }
-
-    // 2. Validación de búsqueda
+    // 2. Validación de búsqueda (no me hace falta porque el flujo ya lo hace, pero por si acaso)
     if (!query) {
         console.warn('El término de búsqueda está vacío.');
         return [];
@@ -27,7 +22,7 @@ async function searchAmazonProducts(query, country, page) {
             url: `https://${RAPIDAPI_HOST}/search`,
             params: {
                 query: query,
-                country: selectedCountry, // Dinámico según el parámetro
+                country: selectedCountry,
                 page: page
             },
             headers: {
@@ -45,7 +40,6 @@ async function searchAmazonProducts(query, country, page) {
         }
 
         // 3. Limitar a 5 resultados y formatear
-        // Usamos .slice(0, 5) para tomar solo los primeros 5 elementos
         const productsArray = products.slice(0, 5).map((product, index) => {
             return {
                 index: index,
@@ -53,6 +47,7 @@ async function searchAmazonProducts(query, country, page) {
                 titulo: product.product_title,
                 precio: product.product_price,
                 url: product.product_url,
+                foto: product.product_photo, 
                 calificación: product.product_star_rating,
                 numopiniones: product.product_num_ratings,
                 tienda: selectedCountry // De momento no se usa, pero lo guardamos por si queremos mostrarlo luego
@@ -68,14 +63,17 @@ async function searchAmazonProducts(query, country, page) {
 }
 
 //Función para buscar los detalles de un producto dado su identificador ASIN
-async function retrieveProductDetails(productASIN) {
+async function retrieveProductDetails(productASIN, country) {
+    
+    const selectedCountry = validateCountry(country);
+
     try {
         const options = {
             method: 'GET',
             url: `https://${RAPIDAPI_HOST}/product-details`,
             params: {
                 asin: productASIN,        // El ID del producto 
-                country: 'US'
+                country: selectedCountry
             },
             headers: {
                 'X-RapidAPI-Key': AMAZON_RAPIDAPI_KEY,
@@ -96,6 +94,16 @@ async function retrieveProductDetails(productASIN) {
     } catch (error) {
         console.error('Error al buscar detalles del producto en Amazon:', error);
     }
+}
+
+function validateCountry(country) {
+    const validCountries = ['US', 'ES'];
+    let selectedCountry = country?.toUpperCase();
+
+    if (!validCountries.includes(selectedCountry)) {
+        selectedCountry = 'US'; // Valor por defecto
+    }
+    return selectedCountry;
 }
 
 

@@ -19,7 +19,12 @@ const flowAmazon = addKeyword('deditofeliz')
         const results = await searchAmazonProducts(termino, tienda, pagina)
         if (results != undefined) {
             for (const product of results) {
-                await flowDynamic(formatTextProduct(product))
+                await flowDynamic([
+                {
+                    body: formatTextProduct(product), 
+                    media: product.foto
+                }
+            ])
             }
         } else
             await flowDynamic('No se han podido encontrar productos. Por favor prueba con otros términos de búsqueda')
@@ -28,15 +33,14 @@ const flowAmazon = addKeyword('deditofeliz')
 
 function formatTextProduct(product) {
     //( ${product.asin} ) Ya viene al final de la url del producto
-    return `----------------------------
+    return `
     💵 *${product.precio}* 
 
     *${product.titulo}* 
     
     *${product.calificación}* ⭐️ ( ${product.numopiniones} opiniones )
     
-    ${product.url}
-    ----------------------------`;
+    ${product.url}`;
 
 }
 
