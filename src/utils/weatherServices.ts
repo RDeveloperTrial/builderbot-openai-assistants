@@ -58,7 +58,8 @@ async function getCurrentWeather(lat: number, lon: number) {
             🌡️: ${Math.round(weatherData.main.temp)}°C
             ⛅️: ${weatherData.weather[0].description}
             😅: ${weatherData.main.humidity}%
-            🌬️: ${weatherData.wind.speed} m/s` 
+            🌬️: ${(weatherData.wind.speed * 3.6).toFixed(1)} km/h`
+ 
         return weather
     } catch (error) {
         console.error('Error al obtener el clima actual:', error);

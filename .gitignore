@@ -16,3 +16,8 @@ src/utils/yahooServices_Old.ts
 
 env.txt
 img
+src/provider-wa.ts
+src/queue.ts
+src/appAI.ts
+ecosystem.config.js
+bot.qr.png
